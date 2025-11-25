@@ -1,7 +1,8 @@
-#grep apps /etc/hosts || sudo echo 127.0.0.1 apps >> /etc/hosts
-podman container rm -f apps.example.com
+#grep apps /etc/hosts || sudo echo 127.0.0.1 apps apps.example.com >> /etc/hosts
+podman container rm -f apps.example.com apps
 podman network rm ebs12212
 podman volume rm ebs12212
+podman image rm ebs12212
 rm -f root.gz u01.gz Oracle-E-Business-Suite-12.2.12_VISION_INSTALL-disk001.vmdk Oracle-E-Business-Suite-12.2.12_VISION_INSTALL.ovf
 tar -xvf Oracle-E-Business-Suite-12.2.12_VISION_INSTALL.ova
 export LIBGUESTFS_BACKEND=direct 
