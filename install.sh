@@ -21,3 +21,4 @@ podman volume create ebs12212
 podman volume import ebs12212 u01.gz
 rm -f root.gz u01.gz 
 podman container run -d -p 8000:8000 -p 1521:1521 -p 7001:7001 -p 7002:7002 -v ebs12212:/u01 --network ebs12212 --hostname apps.example.com --name apps ebs12212 
+podman container exec -it -u oracle apps bash
