@@ -1,4 +1,4 @@
-#grep apps /etc/hosts || sudo echo 127.0.0.1 apps apps.example.com appliebspublic appliebspublic.domainexample.com >> /etc/hosts
+#grep apps /etc/hosts || sudo echo 127.0.0.1 apps.example.com appliebspublic.domainexample.com >> /etc/hosts
 podman container rm -f apps
 podman container rm -f appliebspublic
 podman network rm ebs12212
@@ -29,14 +29,13 @@ chmod +x first_boot.sh
 ./first_boot.sh
 
 podman container rm -f apps.example.com apps
-grep apps /etc/hosts || sudo echo 127.0.0.1 apps apps.example.com appliebspublic appliebspublic.domainexample.com >> /etc/hosts
+grep apps /etc/hosts || sudo echo 127.0.0.1 apps.example.com appliebspublic.domainexample.com >> /etc/hosts
 podman container run -d -p 8000:8000 -p 1521:1521 -p 7001:7001 -p 7002:7002 -v ebs12212:/u01 --network ebs12212 --hostname appliebspublic.domainexample.com --name appliebspublic ebs12212
 podman container exec -it -u oracle appliebspublic bash
 /u01/install/APPS/scripts/startdb.sh
 /u01/install/APPS/scripts/startapps.sh
 exit
 
-unzip p37063173_180431_Linux-x86-64.zip -d /usr/lib/jdk1.8.0_431/
 export JAVA_HOME=/usr/lib/jdk1.8.0_431/
 export PATH=$PATH:$JAVA_HOME/bin
 javaws ~/Téléchargements/frmservlet.jnlp
