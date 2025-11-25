@@ -36,6 +36,7 @@ podman container exec -it -u oracle appliebspublic bash
 /u01/install/APPS/scripts/startapps.sh
 exit
 
+unzip p37063173_180431_Linux-x86-64.zip -d /usr/lib/jdk1.8.0_431/
 export JAVA_HOME=/usr/lib/jdk1.8.0_431/
 export PATH=$PATH:$JAVA_HOME/bin
 javaws ~/Téléchargements/frmservlet.jnlp
