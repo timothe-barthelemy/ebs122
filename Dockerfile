@@ -2,12 +2,12 @@ FROM scratch as build
 ADD root.gz /
 USER root 
 RUN rm -f /swapfile
-RUN head -13 /root/.bashrc > /root/.bashrc
-ADD fix-hosts.sh /usr/local/bin/fix-hosts.sh
-RUN chmod +x /usr/local/bin/fix-hosts.sh
+RUN cp -rp /root/.bashrc /root/oldbashrc && head -13 /root/.bashrc > /root/.bashrc
+ADD entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
 FROM scratch
 USER root 
 COPY --from=build / /
-ENTRYPOINT ["/usr/local/bin/fix-hosts.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["sh", "-c", "sleep infinity"]
